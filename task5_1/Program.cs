@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 class Sad
 {
     static Random random = new Random();
@@ -11,7 +10,7 @@ class Sad
 
         for (int i = 0; i < numbers.Length; i++)
         {
-         
+            numbers[i] = random.Next(minValue, maxValue);
         }
 
         return numbers;
@@ -26,23 +25,29 @@ class Sad
         Console.WriteLine();
     }
 
-    static void Main(string[] args)
+    static (int arraySize, int minValue, int maxValue) User()
     {
-        Console.WriteLine("Введіть довжину масиву");
+        Console.WriteLine("Введiть довжину масиву");
         int arraySize = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Введіть мінімальне значення");
+        Console.WriteLine("Введiть мiнiмальне значення");
         int minValue = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Введіть максимальне значення");
+        Console.WriteLine("Введiть максимальне значення");
         int maxValue = Convert.ToInt32(Console.ReadLine());
 
-        
+        return (arraySize, minValue, maxValue);
+    }
+
+    static void Main(string[] args)
+    {
+        var (arraySize, minValue, maxValue) = User();
+
         int[] generatedArray = generateArray(arraySize, minValue, maxValue, random);
 
-
         Console.Write("Згенерований масив => ");
-            showArray(generatedArray);
+        showArray(generatedArray);
     }
 }
+
 /*
 
 int[] numbers = { 678, 465, 345, 788, 234, 678, 234, 546, 234, 980 };
